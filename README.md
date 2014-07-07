@@ -10,10 +10,11 @@ This module offers a simple interface to Shorten LongUrl using Bit.ly API.
 
 Example
 -------
-import bitlylib #imports Bitly lib
+import bitlylib    #imports Bitly lib
 
 bitlylib.lngurl = "http://example.com"
-print bitylib.shorten()# shorten Url and store it in any variable
+
+print bitylib.shorten()     # shorten Url and store it in any variable
 
 Installation
 ------------
