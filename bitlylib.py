@@ -9,20 +9,20 @@ def shorten():
 	endpoint = 'https://api-ssl.bitly.com/v3/shorten'
 	try:
 		response = requests.get(endpoint, params=query_params, verify=False)
-		if response.status_code == 200:
-                        data = json.loads(response.content)
-        
-                        while(True):
-        	               if data['status_code']==200:
-        		              return  data['data']['url']
-        		              break
-        	               else:
+	except requests.ConnectionError:
+                print 'Network Problem,Please check Internet Connection'
+	if response.status_code == 200:
+                data = json.loads(response.content)
+                while(True):
+                        if data['status_code']==200:
+                                return  data['data']['url']
+                                break
+                        else:
                                 print "There was some problem, Error Code :" , data['status_code']
                                 print "Error status text is : ", data['status_txt']
                                 break
-                else:
-                        print 'There was some problem:\n status_code:',response.status_code
+        else:
+                print 'There was some problem:\n status_code:',response.status_code       
                         
-        except requests.ConnectionError:
-                print 'Network Problem,Please check Internet Connection'
+        
 #End of Bitly API library
